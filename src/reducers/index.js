@@ -3,9 +3,8 @@ import { ADD_NOTE, REMOVE_NOTE } from '../actions/actions-types/index';
 const initState = {
   intro: 'No Hay Notas Agregadas',
   addNotes: [],
-  estado: true,
+  estado: false,
   save: false,
-  visibility: false
 }
 
 const noteReducer = (state = initState, action) =>{

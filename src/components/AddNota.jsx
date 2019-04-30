@@ -19,6 +19,7 @@ const AddContainer = styled.div`
 const AddButton = styled.div`
     width: 50px;
     height: 50px;
+    color: white;
     background: #FF9D1F;
     font-size: 1.5rem;
     border-radius: 50%;
@@ -35,10 +36,6 @@ const AddButton = styled.div`
     }
 `;
 
-const AddIcon = styled.i`
-    color: white;
-`;
-
 class AddNota extends Component{
     render(){
         const handleClick =()=> {
@@ -48,7 +45,7 @@ class AddNota extends Component{
             <AddStyle>
                 <AddContainer>
                     <AddButton onClick={handleClick}>
-                        <AddIcon className="fas fa-plus"></AddIcon>
+                        <i className="fas fa-plus"></i>
                     </AddButton>
                 </AddContainer>
             </AddStyle>
