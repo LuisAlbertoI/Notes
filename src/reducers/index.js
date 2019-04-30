@@ -14,10 +14,9 @@ const noteReducer = (state = initState, action) =>{
         addNotes: [...state.addNotes, action.datos]
       }
       case REMOVE_NOTE:
-      let newNotes = state.addNotes.filter(item=> action.id !== item.id)
       return {
         ...state,
-        addNotes: newNotes
+        addNotes: state.addNotes.filter(item=> action.id !== item.id)
       }
       case OPEN_NEW_NOTE:
       return {

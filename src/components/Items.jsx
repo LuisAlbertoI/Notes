@@ -53,6 +53,7 @@ const ItemName = styled.div`
 `;
 
 const H4 = styled.h4`
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0 4px;
 `;
