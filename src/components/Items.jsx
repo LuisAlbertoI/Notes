@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { removeNote } from '../actions/index';
 
 const ItemsStyle = styled.div`
     display: flex;
@@ -76,6 +77,13 @@ const ItemDelete = styled.div`
 `;
 
 class Items extends Component{
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick(id){
+        this.props.removeNote(id)
+    }
     render(){
         const item = this.props.state.map((item, index)=>{
             return(
@@ -85,7 +93,7 @@ class Items extends Component{
                     </ItemContent>
                     <ItemName>
                         <H4>{item.name}</H4>
-                        <ItemDelete>
+                        <ItemDelete onClick={()=>{this.handleClick(item.id)}}>
                             <i className="fas fa-trash-alt"></i>
                         </ItemDelete>
                     </ItemName>
@@ -106,4 +114,10 @@ const mapState = (state) =>{
     }
 }
 
-export default connect(mapState)(Items);
+const mapDispatch = (dispatch)=>{
+    return{
+        removeNote: (id)=> {dispatch(removeNote(id))}
+    }
+}
+
+export default connect(mapState, mapDispatch)(Items);
