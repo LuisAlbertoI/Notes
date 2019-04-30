@@ -1,9 +1,9 @@
-import { ADD_NOTE, REMOVE_NOTE } from '../actions/actions-types/index';
+import { ADD_NOTE, REMOVE_NOTE, OPEN_NEW_NOTE, CLOSE_NEW_NOTE  } from '../actions/actions-types/index';
 
 const initState = {
   intro: 'No Hay Notas Agregadas',
   addNotes: [],
-  estado: 0
+  active: null
 }
 
 const noteReducer = (state = initState, action) =>{
@@ -11,14 +11,22 @@ const noteReducer = (state = initState, action) =>{
       case ADD_NOTE:
       return {
         ...state,
-        addNotes: [...state.addNotes, action.datos],
-        estado: + 1
+        addNotes: [...state.addNotes, action.datos]
       }
       case REMOVE_NOTE:
       return {
         ...state,
         removeNote: state,
-        estado: - 1
+      }
+      case OPEN_NEW_NOTE:
+      return {
+        ...state,
+        active: state.active = true
+      }
+      case CLOSE_NEW_NOTE:
+      return {
+        ...state,
+        active: state.active = false
       }
       default:
       return state;

@@ -6,16 +6,10 @@ import Items from './components/Items';
 import AddNota from './components/AddNota';
 
 class App extends Component{
-  constructor(props) {
-    super(props);
-    this.estado = this.props.state.estado,
-    this.intro = this.props.state.intro
-  }
-
   render(){
     return (
       <Main>
-        { this.estado === 0 ? <Intro intro={this.intro}/> :
+        {this.props.notes.length === 0 ? <Intro intro={this.props.intro}/> :
           <Items/>
         }
         <AddNota/>
@@ -26,7 +20,8 @@ class App extends Component{
 
 const mapState = (state) =>{
   return {
-    state: state
+    notes: state.addNotes,
+    intro: state.intro
   }
 }
 

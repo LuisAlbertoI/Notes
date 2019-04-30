@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CreateNote from './CreateNote';
+import { connect } from 'react-redux';
+import { openNewNote } from '../actions/index';
 
 const AddStyle = styled.div`
     width: 100%;
@@ -40,11 +42,10 @@ const AddButton = styled.div`
 class AddNota extends Component{
     constructor(props){
         super(props);
-        this.state = {newNote: undefined},
         this.handleClick = this.handleClick.bind(this)
     }
     handleClick(){
-        this.setState({newNote: <CreateNote />});
+        this.props.openNewNote();   
     }
     render(){
         return(
@@ -56,10 +57,24 @@ class AddNota extends Component{
                         </AddButton>
                     </AddContainer>
                 </AddStyle>
-                {this.state.newNote}
+                {this.props.active &&
+                    <CreateNote />
+                }
             </div>
         );
     }
 }
 
-export default AddNota;
+function mapState (state){
+    return{
+        active: state.active
+    }
+}
+
+function mapDispatch (dispatch){
+    return{
+        openNewNote: ()=>{dispatch(openNewNote())}
+    }
+}
+
+export default connect(mapState, mapDispatch)(AddNota);

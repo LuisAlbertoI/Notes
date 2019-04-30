@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const ItemsStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const ItemStyle = styled.div`
@@ -21,7 +22,7 @@ const ItemStyle = styled.div`
 const ItemContent = styled.div`
     width: 100%;
     height: 88%;
-    overflow-y: auto;
+    overflow: auto;
     ::-webkit-scrollbar{
         width: 8px;
         height: 8px;
@@ -60,6 +61,7 @@ const ItemDelete = styled.div`
     height: inherit;
     line-height: 40px;
     color: #2A2B4A;
+    background: #FFD74F;
     cursor: pointer;
     text-align: center;
     font-size: 1.5rem;
@@ -99,7 +101,6 @@ class Items extends Component{
 }
 
 const mapState = (state) =>{
-    console.log(state)
     return{
         state: state.addNotes
     }
