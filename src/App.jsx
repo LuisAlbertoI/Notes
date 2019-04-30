@@ -4,7 +4,6 @@ import Main from './components/Main';
 import Intro from './components/Intro';
 import Items from './components/Items';
 import AddNota from './components/AddNota';
-import CreateNota from './components/CreateNote';
 
 class App extends Component{
   constructor(props) {
@@ -16,7 +15,7 @@ class App extends Component{
   render(){
     return (
       <Main>
-        {! this.estado ? <Intro intro={this.intro}/> :
+        { this.estado === 0 ? <Intro intro={this.intro}/> :
           <Items/>
         }
         <AddNota/>

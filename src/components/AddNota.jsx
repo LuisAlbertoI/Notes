@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import CreateNote from './CreateNote';
 
 const AddStyle = styled.div`
     width: 100%;
@@ -37,18 +38,26 @@ const AddButton = styled.div`
 `;
 
 class AddNota extends Component{
+    constructor(props){
+        super(props);
+        this.state = {newNote: undefined},
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick(){
+        this.setState({newNote: <CreateNote />});
+    }
     render(){
-        const handleClick =()=> {
-
-        }
         return(
-            <AddStyle>
-                <AddContainer>
-                    <AddButton onClick={handleClick}>
-                        <i className="fas fa-plus"></i>
-                    </AddButton>
-                </AddContainer>
-            </AddStyle>
+            <div className="AddNote">
+                <AddStyle>
+                    <AddContainer>
+                        <AddButton onClick={this.handleClick}>
+                            <i className="fas fa-plus"></i>
+                        </AddButton>
+                    </AddContainer>
+                </AddStyle>
+                {this.state.newNote}
+            </div>
         );
     }
 }

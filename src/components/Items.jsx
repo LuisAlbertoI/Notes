@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNote } from '../actions/index';
 import styled from 'styled-components';
 
 const ItemsStyle = styled.div`
@@ -68,6 +67,10 @@ const ItemDelete = styled.div`
     bottom: 0;
     right: 0;
     z-index: 2;
+    transition-duration: .2s;
+    :active{
+        transform: scale(.9);
+    }
 `;
 
 class Items extends Component{
@@ -90,28 +93,16 @@ class Items extends Component{
         return(
             <ItemsStyle>
                 {item}
-                {item}
-                {item}
-                {item}
-                {item}
-                {item}
-                {item}
             </ItemsStyle>
         );
     }
 }
 
 const mapState = (state) =>{
+    console.log(state)
     return{
         state: state.addNotes
     }
 }
 
-const mapDispatch = ( dispatch ) =>{
-    return{
-        addNote: dispatch(addNote({id: 1, name: 'luis ausdyyaudsai asdsayd sjdasdhd ', note: 'hola me llamo luis y soy genial mhgdhfgdjhf msjhfdggdjf dsfgjhsdgf sdfgjshdfds s sd sfd gsg tg str sg  gf g dg dg sdf  df g df g dfg df g df df  g fdsg d f gd gdsfg  fds g fddfgsdhjfgjsfd dsfghjsdfsdf sdfjsdf sdfhjgsfsd sdfjhsgdf dsfjhgsdfhjsdf sdfhgsdjfsdf jhsdgfjhdfgsd fsdfg hsdhfjgjdsfds fsd fgjds hjfghjdsf dsf sdhfjdfdsfds fdjfghdsfds jfgjhds fsdjfsdjhf ds gfhsjdfjhsgd fkjdshfksdh fsd fhksdhfherifkfksbfsjhdfjhsdf dfsdh jkfh jdfdfksd fd fds kfdjsfh'}))
-    }
-}
-
-
-export default connect(mapState, mapDispatch)(Items);
+export default connect(mapState)(Items);

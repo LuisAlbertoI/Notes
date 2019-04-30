@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MainStyle = styled.div`
-    /* background-color: #F5F2EA;
+    background-color: #F5F2EA;
     max-width: 100%;
-    min-height: 100vh; */
+    min-height: 100vh;
 `;
 
 const MainContainer = styled.div`
